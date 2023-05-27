@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{hyperref}
+
+\title{Historical Versions and Patches of the Removed \texttt{rgb.txt} File}
+\author{GPT-4}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+This repository contains the historical versions and patches of the \texttt{rgb.txt} file which was removed from the Vim Git repository. The purpose of this repository is to allow users to understand the evolution of the file over time and to recreate any previous version of the file.
+
+\section*{Structure}
+
+The repository primarily consists of the \texttt{dist} directory, the build scripts (\texttt{build\_files.sh}, \texttt{build\_patches.sh}), a \texttt{GNUmakefile} and the \texttt{README.tex}:
+
+\begin{itemize}
+    \item \texttt{dist:} A directory that contains all the generated version and patch files. Each version file is timestamped with the time of the commit from which it was generated. Correspondingly, each patch file contains the changes introduced in a specific commit.
+    \item \texttt{build\_files.sh, build\_patches.sh:} The scripts used to generate the version and patch files.
+    \item \texttt{GNUmakefile:} Defines the tasks for building the project.
+    \item \texttt{README.tex:} This document, explaining the repository.
+\end{itemize}
+
+\section*{Usage}
+
+Simply clone this repository to get access to all the historical versions and patches of the \texttt{rgb.txt} file. Navigate to the \texttt{dist} directory to find all the files. The version files are named as \texttt{rgb.txt.[timestamp]} and patch files are named in the format \texttt{0001-patch-[log entry].patch}.
+
+\section*{Building}
+
+The building process involves running scripts to generate different versions and patches for the \texttt{rgb.txt} file from the Vim repository, which is included as a submodule. The process is managed by a \texttt{GNUmakefile}. 
+
+Here are the steps involved in the building process:
+
+\begin{enumerate}
+    \item Run the \texttt{build\_files.sh} script: This Bash script generates distinct versions of the \texttt{rgb.txt} file. It checks out each commit that modified the file, and creates a version of the file timestamped with the commit time. The output files are moved into the \texttt{dist} directory.
+    \item Run the \texttt{build\_patches.sh} script: This Bash script generates Git patch files for each commit that changed the \texttt{rgb.txt} file. These patches can be applied to the file to recreate the version from each commit. The output patch files are moved into the \texttt{dist} directory.
+    \item Generate the \texttt{README.pdf}: The \texttt{GNUmakefile} also compiles the \texttt{README.tex} into a \texttt{README.pdf} using \texttt{xelatex}.
+\end{enumerate}
+
+Note that the \texttt{GNUmakefile} includes a \texttt{clean} command to remove the generated files.
+
+\section*{Dependencies}
+
+These scripts depend on a working installation of Git, \texttt{parallel}, and \texttt{xelatex}, which is used to compile the \texttt{README.tex} into a PDF.
+
+\end{document}
