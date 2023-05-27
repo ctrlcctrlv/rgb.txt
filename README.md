@@ -1,3 +1,5 @@
+- [Temporarily hacked together `rgb.txt` for `vimcat`](rgb.txt)
+
 This repository contains the historical versions and patches of the
 `rgb.txt` file which was removed from the Vim Git repository. The
 purpose of this repository is to allow users to understand the evolution
